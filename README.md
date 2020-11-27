@@ -32,7 +32,7 @@ The structure of this repository is as follows:
     
 (1) Der *shared*-Order ist für zusätzliche Dateien, die neben der Lösungsdatei benötigt werden, etwa Hilfscode oder Bibliotheken. Jede\*r Beitragende darf dort einen eigenen, entsprechend benannten Ordner erstellen, über den frei verfügt werden darf.
 
-(2) Jeder neue Tag bekommt einen eigenen Ordner, der nach dem Schema *Day-`XX`* benannt ist, wobei `XX` die zwei Ziffern des Tages darstellen. Also z.B. steht *Day-01* für Tag 1 und *Day-15*für Tag 15.
+(2) Jeder neue Tag bekommt einen eigenen Ordner, der nach dem Schema *Day-`XX`* benannt ist, wobei `XX` die zwei Ziffern des Tages darstellen. Also z.B. steht *Day-01* für Tag 1 und *Day-15* für Tag 15.
 
 (3) Jeder Tag hat je einen Unterordner für die Programmiersprachen, in denen er gelöst wurde. Dabei ist für den Namen des Ordners der kleingeschriebene Name der Sprache zu verwenden, also z.B. *java*, *go* oder *javascript*.
 
@@ -59,7 +59,7 @@ Wenn du zu den Lösungen beitragen möchtest, hast du zwei Optionen: **Selbst mi
 ### Pull Requests erstellen
 1. Forke dieses Repository in deinen GitHub-Account (oben rechts auf "Fork" klicken)
 2. Klone das Repository bei dir lokal
-3. Füge deine Lösungen hinzu und bearbeite sie - **beachte dabei die [Ordnerstruktur](#Ordnerstruktur-Directory-Structure)**
+3. Füge deine Lösungen hinzu und bearbeite sie - **beachte dabei die [Ordnerstruktur](#ordnerstrukturdirectory-structure)**
 4. Mache eine Pull Request wann immer du
   a. neue funktionierende Lösung(en) hast
   b. Lust drauf hast (du musst nicht jeden Tag eine Pull Request machen, kannst dir auch Zeit damit lassen)
