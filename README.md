@@ -61,8 +61,8 @@ Wenn du zu den Lösungen beitragen möchtest, hast du zwei Optionen: **Selbst mi
 2. Klone das Repository bei dir lokal
 3. Füge deine Lösungen hinzu und bearbeite sie - **beachte dabei die [Ordnerstruktur](#ordnerstrukturdirectory-structure)**
 4. Mache eine Pull Request wann immer du
-  a. neue funktionierende Lösung(en) hast
-  b. Lust drauf hast (du musst nicht jeden Tag eine Pull Request machen, kannst dir auch Zeit damit lassen)
+  - neue funktionierende Lösung(en) hast
+  - Lust drauf hast (du musst nicht jeden Tag eine Pull Request machen, kannst dir auch Zeit damit lassen)
 
 ### Lösungen an die Verwaltung geben
 1. Löse die Aufgabe(n)
