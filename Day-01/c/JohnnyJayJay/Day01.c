@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
     FILE* file = fopen(input_file, "r");
     int lines = count_lines(file);
     printf("Read %d lines\n", lines);
-    int* numbers = malloc(lines);
+    int* numbers = malloc(sizeof(int) * lines);
     read_ints(file, numbers, lines);
     puts("Solving...");
     int part1 = 0;
