@@ -1,32 +1,21 @@
-#include <stdio.h>
+/* compile from project root using 
+   cc -Wall -g shared/JohnnyJayJay/aoc.c Day-01/c/JohnnyJayJay/Day01.c -o day01 */
 
-int count_lines(FILE* file) {
-    int lines = 0;
-    int c;
-    while ((c = fgetc(file)) != EOF) {
-        if (c == '\n') {
-            lines++;
-        }
-    }
-    return lines;
-}
+#include <stdio.h>
+#include <stdlib.h>
+#include "../../../shared/JohnnyJayJay/aoc.h"
 
 int main(int argc, char** argv) {
     puts("Reading file...");
     char* input_file = argv[1];
     FILE* file = fopen(input_file, "r");
     int lines = count_lines(file);
-    rewind(file);
     printf("Read %d lines\n", lines);
-    int numbers[lines];
-    for (int i = 0; i < lines; i++) {
-        int num;
-        fscanf(file, "%d", &num);
-        numbers[i] = num;
-    }
-    putchar('\n');
+    int* numbers = malloc(lines);
+    read_ints(file, numbers, lines);
     puts("Solving...");
-    int part1, part2 = 0;
+    int part1 = 0;
+    int part2 = 0;
     for (int i = 0; i < lines; i++) {
         int first = numbers[i];
         for (int j = 0; j < lines; j++) {
