@@ -9,9 +9,9 @@ Hier ist ein Überblick über die Vollständigkeit sowie die existierenden Lösu
 
 Here's an overview of the completeness as well as the existing solutions and languages used in this repository:
 
-| Day/Lang | 
-| -------- | 
-| 01       |
+| Day/Lang | Python |
+| -------- | ------ |
+| 01       |   ✅   |
 
 ❌   = Keine Lösung/No solution,
 ✅   = Voll gelöst/Fully solved,
