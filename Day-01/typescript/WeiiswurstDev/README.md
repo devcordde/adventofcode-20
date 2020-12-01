@@ -4,8 +4,10 @@ Remember to put your input in input.txt (this is temporary until the team found 
 
 Install:
 ```
-npm run install```
+npm run install
+```
 
 Start:
 ```
-npm run start```
+npm run start
+```
