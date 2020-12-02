@@ -13,7 +13,7 @@ Here's an overview of the completeness as well as the existing solutions and lan
 | Day/Lang | Python | TypeScript | C   | Kotlin | Java |
 | -------- | ------ | ---------- | --- | ------ | ---- |
 | 01       | ✅     | ✅         | ✅  | ✅     | ✅   |
-| 02       | ✅     |            | ✅  | ✅     |      |
+| 02       | ✅     | ✅         | ✅  | ✅     | ✅   |
 
 ❌   = Keine Lösung/No solution,
 ✅   = Voll gelöst/Fully solved,
