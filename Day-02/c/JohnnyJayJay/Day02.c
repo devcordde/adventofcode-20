@@ -1,3 +1,6 @@
+/* compile from project root using 
+   cc -Wall -g shared/JohnnyJayJay/aoc.c Day-02/c/JohnnyJayJay/Day02.c -o day02 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
