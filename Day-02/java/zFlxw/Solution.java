@@ -50,6 +50,7 @@ public class Solution {
     private static List<String> readInput() {
         List<String> values = new ArrayList<>();
         String path = new File("").getAbsolutePath();
+        // Pfad könnte bei euch anders sein | Path might be different for you
         File file = new File(path.concat("/src/day2/input.txt"));
         try {
             Scanner scanner = new Scanner(file);
