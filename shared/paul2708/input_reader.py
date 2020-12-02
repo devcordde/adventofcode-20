@@ -12,3 +12,11 @@ def read_ints(day: str) -> List[int]:
 
     file.close()
     return ints
+
+def read_lines(day: str) -> List[str]:
+    file = open(f"../../../shared/paul2708/input/{day}.txt", "r")
+
+    lines = file.read().splitlines()
+
+    file.close()
+    return lines
