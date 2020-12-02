@@ -22,4 +22,23 @@ for line in lines:
     if lower_bound <= letter_count <= upper_bound:
         valid_passwords += 1
 
-aoc_print(f"{valid_passwords} passwords are valid.")
+aoc_print(f"{valid_passwords} passwords are valid. (old interpretation)")
+
+# Part two
+valid_passwords = 0
+
+for line in lines:
+    parts = line.split(" ")
+
+    first_index = int(parts[0].split("-")[0]) - 1
+    second_index = int(parts[0].split("-")[1]) - 1
+
+    letter = parts[1][:-1]
+
+    password = parts[2]
+
+    if password[first_index] == letter and password[second_index] != letter\
+            or password[first_index] != letter and password[second_index] == letter:
+        valid_passwords += 1
+
+aoc_print(f"{valid_passwords} passwords are valid. (new interpretation)")
