@@ -1,4 +1,5 @@
 # adventofcode-20
+
 Ein Sammel-Repository für [Advent of Code](https://adventofcode.com) 2020-Lösungen der deutschen [DevCord](http://join.devcord.xyz)-Community.
 
 A repository collecting [Advent of Code](https://adventofcode.com) 2020 solutions made by the German [DevCord](http://join.devcord.xyz) community.
@@ -9,9 +10,9 @@ Hier ist ein Überblick über die Vollständigkeit sowie die existierenden Lösu
 
 Here's an overview of the completeness as well as the existing solutions and languages used in this repository:
 
-| Day/Lang | 
-| -------- | 
-| 01       |
+| Day/Lang | Python | TypeScript | C   | Kotlin | Java |
+| -------- | ------ | ---------- | --- | ------ | ---- |
+| 01       | ✅      | ✅          | ✅   | ✅      | ✅    |
 
 ❌   = Keine Lösung/No solution,
 ✅   = Voll gelöst/Fully solved,
@@ -28,15 +29,15 @@ The structure of this repository is as follows:
     - \*
 - Day-`XX`        (2) 
   - `lang`        (3)
-    - `user`.*    (4)
-    
+    - `user`    (4)
+
 (1) Der *shared*-Order ist für zusätzliche Dateien, die neben der Lösungsdatei benötigt werden, etwa Hilfscode oder Bibliotheken. Jede\*r Beitragende darf dort einen eigenen, entsprechend benannten Ordner erstellen, über den frei verfügt werden darf.
 
 (2) Jeder neue Tag bekommt einen eigenen Ordner, der nach dem Schema *Day-`XX`* benannt ist, wobei `XX` die zwei Ziffern des Tages darstellen. Also z.B. steht *Day-01* für Tag 1 und *Day-15* für Tag 15.
 
 (3) Jeder Tag hat je einen Unterordner für die Programmiersprachen, in denen er gelöst wurde. Dabei ist für den Namen des Ordners der kleingeschriebene Name der Sprache zu verwenden, also z.B. *java*, *go* oder *javascript*.
 
-(4) Es können mehrere Lösungen von unterschiedlichen Beitragenden in der gleichen Programmiersprache abgegeben werden. Deshalb sollte sich pro Lösung eine Datei in dem entsprechenden Sprachen-Ordner befinden, die den Namen des\*der Beitragenden mit der benötigten Dateiendung trägt. Der Name sollte identisch mit dem Namen des dazu passenden Ordner in *shared* sein, falls einer existiert.
+(4) Es können mehrere Lösungen von unterschiedlichen Beitragenden in der gleichen Programmiersprache abgegeben werden. Deshalb sollte sich pro Lösung ein Ordner in dem entsprechenden Sprachen-Ordner befinden, der den Namen des\*der Beitragenden trägt und den Quellcode der Lösung (für beide Teilaufgaben, falls vorhanden) enthält. Der Name dieses Ordners sollte identisch mit dem Namen des dazu passenden Ordner in *shared* sein, falls einer existiert.
 
 ----------------
 
@@ -46,7 +47,7 @@ The structure of this repository is as follows:
 
 (3) Every day gets one sub directory for each language it has been solved in. The name of those directories must be the name of the programming language in lower case, e.g. *java*, *go* or *javascript*.
 
-(4) There can be more than one solution in each language for each day by different contributors. Hence each solution file in the corresponding language directory of the day should be named after the contributor who created it. This should be the same name that is also used for the personal directory in *shared*, should one exist.
+(4) There can be more than one solution in each language for each day by different contributors. For this reason, for each solution, there should be one directory in the corresponding language directory for the day named after the contributor who created it containing the source code of that solution. This should be the same name that is also used for the personal directory in *shared*, should one exist.
 
 ## Lösungen ausführen/Run the solutions
 
@@ -57,16 +58,18 @@ TODO
 Wenn du zu den Lösungen beitragen möchtest, hast du zwei Optionen: **Selbst mit git arbeiten und Pull Requests erstellen** oder **deine Lösungen der Verwaltung dieses Repositories auf Discord schicken**. Wir empfehlen ersteres, wenn du schon mal git benutzt hast und zweiteres, wenn du von diesem System nur Bahnhof verstehst.
 
 ### Pull Requests erstellen
+
 1. Forke dieses Repository in deinen GitHub-Account (oben rechts auf "Fork" klicken)
 2. Klone das Repository bei dir lokal
 3. Füge deine Lösungen hinzu und bearbeite sie - **beachte dabei die [Ordnerstruktur](#ordnerstrukturdirectory-structure)**
-4. Mache eine Pull Request wann immer du
-  - neue funktionierende Lösung(en) hast
-  - Lust drauf hast (du musst nicht jeden Tag eine Pull Request machen, kannst dir auch Zeit damit lassen)
+4. Bearbeite **nicht** die README! Die Tabelle wird von uns ergänzt.
+5. Mache eine Pull Request wann immer du
+   - neue funktionierende Lösung(en) hast
+   - Lust drauf hast (du musst nicht jeden Tag eine Pull Request machen, kannst dir auch Zeit damit lassen)
 
 ### Lösungen an die Verwaltung geben
+
 1. Löse die Aufgabe(n)
 2. Schicke sie an einen der folgenden DevCord-User mit Informationen zu Sprache, Tag, evtl. benötigten zusätzlichen Dateien und Namen:
-  - `das_#9677`
-  - `Johnny#3826`
-  
+   - `das_#9677`
+   - `Johnny#3826`
