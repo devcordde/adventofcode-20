@@ -23,6 +23,7 @@ for line in lines:
         valid_passwords += 1
 
 aoc_print(f"{valid_passwords} passwords are valid. (old interpretation)")
+assert_equals(424, valid_passwords)
 
 # Part two
 valid_passwords = 0
@@ -42,3 +43,4 @@ for line in lines:
         valid_passwords += 1
 
 aoc_print(f"{valid_passwords} passwords are valid. (new interpretation)")
+assert_equals(747, valid_passwords)
