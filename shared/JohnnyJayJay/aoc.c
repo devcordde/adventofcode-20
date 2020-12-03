@@ -3,7 +3,7 @@
 
 int count_lines(FILE* file) {
     long pos = ftell(file);
-    int lines = 0;
+    int lines = 1;
     int c;
     while ((c = fgetc(file)) != EOF) {
         if (c == '\n') {
