@@ -8,41 +8,49 @@ println("Advent of Code Day 3")
 
 val input = parseInput(Paths.get("input.txt"))
 
-var treeCounter = 0
+val results: Array<Int> = arrayOf(
+        getTreeCountForPath(1, 1),
+        getTreeCountForPath(3, 1),
+        getTreeCountForPath(5, 1),
+        getTreeCountForPath(7, 1),
+        getTreeCountForPath(1, 2),
+)
 
-var x = 0
-var y = 0
+var result = 1L
 
-while (true) {
-
-    x += 3
-    y += 1
-
-    if (y >= input.size) {
-        break
-    }
-
-    if (x >= input[y].size) {
-        x -= input[y].size
-    }
-
-    val position = input[y][x]
-    if (position.isTree) {
-        ++treeCounter
-    }
-    position.hitten = true
-
+results.forEach {
+    result *= it
+    println(it)
 }
 
-input.forEach {
-    it.forEach {
-        val char = if (it.isTree && it.hitten) 'X' else if (it.isTree && !it.hitten) '#' else if (!it.isTree && it.hitten) 'O' else '.'
-        print(char)
-    }
-    println()
-}
+println("Result: $result")
 
-println("Found $treeCounter trees!")
+fun getTreeCountForPath(right: Int, down: Int): Int {
+    var treeCounter = 0
+
+    var x = 0
+    var y = 0
+
+    while (true) {
+
+        x += right
+        y += down
+
+        if (y >= input.size) {
+            break
+        }
+
+        if (x >= input[y].size) {
+            x -= input[y].size
+        }
+
+        val position = input[y][x]
+        if (position.isTree) {
+            ++treeCounter
+        }
+    }
+    return treeCounter
+}
 
 fun parseInput(path: Path): Array<Array<Position>> {
     try {
@@ -60,4 +68,4 @@ fun parseInput(path: Path): Array<Array<Position>> {
     }
 }
 
-class Position(val isTree: Boolean, var hitten: Boolean = false)
+class Position(val isTree: Boolean)
