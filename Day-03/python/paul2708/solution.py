@@ -42,3 +42,22 @@ aoc_print(f"You would hit {trees} trees. (ouch)")
 assert_equals(151, trees)
 
 # Part two
+slopes = [[1, 1], [3, 1], [5, 1], [7, 1], [1, 2]]
+result = 1
+
+for slope in slopes:
+    x = 0
+    y = 0
+
+    trees = 0
+    while y < tree_map.get_height():
+        if tree_map.is_tree(x, y):
+            trees += 1
+
+        x += slope[0]
+        y += slope[1]
+
+    result *= trees
+
+aoc_print(f"The product of hit trees is {result}.")
+assert_equals(7540141059, result)
