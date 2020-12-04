@@ -1,11 +1,8 @@
 //created by MCqwertz
 
-
-package com.github.mcqwertz.year2020.days;
-
-import com.github.mcqwertz.util.TextFileUtils;
-
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.function.IntPredicate;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
@@ -13,18 +10,17 @@ import java.util.stream.IntStream;
 
 public class Day1 {
 	public static void main(String[] args) throws FileNotFoundException {
-		Day1 day = new Day1();
-		Supplier<IntStream> supplier = TextFileUtils.getNumbers(1);
-		System.out.println("Task 1: " + day.getFirstPart(supplier));
-		System.out.println("Task 2: " + day.getSecondPart(supplier));
+		Supplier<IntStream> supplier = getInput();
+		System.out.println("Task 1: " + getFirstPart(supplier));
+		System.out.println("Task 2: " + getSecondPart(supplier));
 	}
 
 	/**
 	 * @param supplier supplier of the stream with all given numbers
 	 * @return the solution of the first problem
 	 */
-	private int getFirstPart(Supplier<IntStream> supplier) {
-		IntPredicate isSearched = arg -> this.isContaining(supplier.get(), 2020 - arg);
+	private static int getFirstPart(Supplier<IntStream> supplier) {
+		IntPredicate isSearched = arg -> isContaining(supplier.get(), 2020 - arg);
 		int result = 1;
 		//check for each int whether there is suitable second int
 		for (int i : supplier.get().filter(isSearched).toArray()) {
@@ -36,7 +32,7 @@ public class Day1 {
 	 * @param supplier supplier of the stream with all given numbers
 	 * @return the solution of the second problem
 	 */
-	private int getSecondPart(Supplier<IntStream> supplier) {
+	private static int getSecondPart(Supplier<IntStream> supplier) {
 		int[] array = supplier.get().toArray();
 		//combine each number with every other number
 		for (int i : array) {
@@ -50,12 +46,22 @@ public class Day1 {
 		return -1;
 	}
 
-	private boolean isContaining(IntStream stream, int x) {
+	private static boolean isContaining(IntStream stream, int x) {
 		for (int i : stream.toArray()) {
 			if(i == x) {
 				return true;
 			}
 		}
 		return false;
+	}
+
+	public static Supplier<IntStream> getInput() throws FileNotFoundException {
+		Scanner scanner = TextFileUtils.getScanner(1);
+		ArrayList<String> arrayList = new ArrayList<>();
+		while(scanner.hasNextLine()) {
+			arrayList.add(scanner.nextLine());
+		}
+		scanner.close();
+		return () -> arrayList.stream().mapToInt(Integer::parseInt);
 	}
 }
