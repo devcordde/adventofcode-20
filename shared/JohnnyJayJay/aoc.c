@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "aoc.h"
 
 int count_lines(FILE* file) {
