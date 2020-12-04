@@ -1,3 +1,6 @@
+
+//  PLEASE READ THE README.md IN MY SHARED FOLDER! 
+
 import fs from 'fs'
 import { EOL } from 'os'
 
