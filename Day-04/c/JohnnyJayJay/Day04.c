@@ -1,3 +1,6 @@
+// Read my README in shared/JohnnyJayJay
+
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <regex.h>

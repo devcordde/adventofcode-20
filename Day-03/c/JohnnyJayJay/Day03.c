@@ -1,5 +1,6 @@
 // Read my README in shared/JohnnyJayJay
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "../../../shared/JohnnyJayJay/aoc.h"
 
