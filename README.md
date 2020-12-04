@@ -15,6 +15,7 @@ Here's an overview of the completeness as well as the existing solutions and lan
 | 01       | ✅      | ✅          | ✅   | ✅      | ✅    |
 | 02       | ✅      | ✅          | ✅   | ✅      | ✅    |
 | 03       | ✅      | ✅          | ✅   | ✅      | ✅    |
+| 04       | ✅      | ✅          | ✅   | ✅      |      |
 
 ❌   = Keine Lösung/No solution,
 ✅   = Voll gelöst/Fully solved,
