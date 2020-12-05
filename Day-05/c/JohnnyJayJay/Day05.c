@@ -52,7 +52,6 @@ int main(int argc, char** argv) {
             break;
         }
     }
-    printf("%d\n", lines);
     printf("Own seat id: %d\n", own_seat_id);
 }
         
