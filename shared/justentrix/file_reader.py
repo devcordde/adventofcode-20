@@ -10,7 +10,7 @@ def read_lines(file_name):
   lines = []
 
   for line in file:
-    lines.append(line.replace('\n', ''))
+    lines.append(line.strip())
 
   return lines
 
