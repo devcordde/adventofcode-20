@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
     for (int i = 0; i < lines - 1; i++) {
         int first = passes[i];
         int second = passes[i + 1];
-        if (abs(first - second) == 2) {
+        if (second - first == 2) {
             own_seat_id = first + 1;
             break;
         }
