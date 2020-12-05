@@ -3,12 +3,16 @@
 
 int count_lines(FILE* file) {
     long pos = ftell(file);
-    int lines = 1;
+    int lines = 0;
     int c;
     while ((c = fgetc(file)) != EOF) {
         if (c == '\n') {
             lines++;
         }
+    }
+    fseek(file, -1, SEEK_CUR);
+    if (fgetc(file) != '\n') {
+        lines++;
     }
     fseek(file, pos, SEEK_SET);
     return lines;
