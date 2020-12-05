@@ -1,5 +1,4 @@
-/* compile from project root using 
-   cc -Wall -g shared/JohnnyJayJay/aoc.c Day-01/c/JohnnyJayJay/Day01.c -o day01 */
+// Read my README in shared/JohnnyJayJay
 
 #include <stdio.h>
 #include <stdlib.h>
