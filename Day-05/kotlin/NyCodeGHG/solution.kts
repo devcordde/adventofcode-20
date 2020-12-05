@@ -4,7 +4,7 @@ import java.nio.file.Paths
 val BACK_KEY = 'B'
 val RIGHT_KEY = 'R'
 
-val highest = Files.readAllLines(Paths.get("input.txt"))
+val ids = Files.readAllLines(Paths.get("input.txt"))
     .map { line ->
 
         val chars = line.toCharArray()
@@ -27,7 +27,6 @@ val highest = Files.readAllLines(Paths.get("input.txt"))
         while (index < 10) {
             val char = chars[index]
             range = calculate(range, char == RIGHT_KEY)
-            println("$char $range")
             index++
         }
         if (range.start != range.endInclusive) {
@@ -36,7 +35,10 @@ val highest = Files.readAllLines(Paths.get("input.txt"))
         val column = range.start
 
         row * 8 + column
-    }.maxOrNull()
+    }
+
+val highest = ids.maxOrNull() ?: error("Cannot get highest seat id")
+val lowest = ids.minOrNull() ?: error("Cannot get lowest seat id")
 
 println("Highest seat id is $highest")
 
@@ -49,3 +51,9 @@ fun calculate(range: IntRange, upper: Boolean): IntRange {
         range.first..(range.start + difference / 2)
     }
 }
+
+val allIds = (lowest..highest).map { it }.toList()
+
+val missing = allIds.filter { it !in ids }.first()
+
+println("Youre seat id is $missing")
