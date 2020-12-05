@@ -1,5 +1,7 @@
 //created by MCqwertz
 
+package MCqwertz;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
