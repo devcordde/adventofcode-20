@@ -30,11 +30,11 @@ int main(int argc, char** argv) {
     int valid_passwords1 = 0;
     int valid_passwords2 = 0;
     for (int i = 0; i < lines; i++) {
-        db_entry entry = entries[i];
-        char* pw = entry.password;
-        char c = entry.c;
-        int min = entry.min;
-        int max = entry.max;
+        db_entry* entry = &entries[i];
+        char* pw = entry->password;
+        char c = entry->c;
+        int min = entry->min;
+        int max = entry->max;
         int count = charcount(pw, c, 0, strlen(pw));
         if (count >= min && count <= max) {
             valid_passwords1++;
