@@ -18,7 +18,7 @@ while (index < lines.size) {
     }
 
     answer.people = ++lastLineCount
-    answer.questions.addAll(line.toCharArray().toList())
+    answer.questions.addAll(line.toCharArray().toMutableSet())
 
     if (++index < lines.size) {
         if (lines[index].isBlank()) {
@@ -35,4 +35,42 @@ while (index < lines.size) {
 
 println(answers.map { it.questions.size }.sum())
 
-data class Answer(val questions: MutableSet<Char> = HashSet<Char>(), var people: Int = 0)
+val groups = ArrayList<Group>()
+var group = Group()
+index = 0
+lastLineCount = 0
+
+while (index < lines.size) {
+    val line = lines[index]
+
+    if (line.isBlank()) {
+        index++
+        continue
+    }
+
+    group.answers.put(++lastLineCount, Answer(line.toCharArray().toMutableSet(), lastLineCount))
+
+    if (++index < lines.size) {
+        if (lines[index].isBlank()) {
+            groups.add(group)
+            group = Group()
+            lastLineCount = 0
+        }
+    } else {
+        groups.add(group)
+        group = Group()
+        lastLineCount = 0
+    }
+}
+
+println(groups.map { aGroup ->
+    val questions = aGroup.answers.map { it.value.questions }.flatten().toMutableSet()
+    questions.removeIf { char ->
+        aGroup.answers.filter { !it.value.questions.contains(char) }.isNotEmpty()
+    }
+    questions.size
+}.sum())
+
+data class Group(val answers: MutableMap<Int, Answer> = mutableMapOf())
+
+data class Answer(val questions: MutableSet<Char> = mutableSetOf<Char>(), var people: Int = 0)
