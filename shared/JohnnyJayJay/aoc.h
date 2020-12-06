@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 int count_lines(FILE* file);
 
 int count_blank_lines(FILE* file);
