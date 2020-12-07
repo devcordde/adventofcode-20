@@ -5,67 +5,27 @@ import kotlin.system.exitProcess
 val allBags = arrayListOf<Bag>()
 
 val contentRegex = "([0-9]+) ([\\w]+ [\\w]+) bag[s]?".toRegex()
-val noBagsRegex = "([\\w]+ [\\w]+) bags contain no other bags.".toRegex()
 
-val rules = arrayListOf<BagRule>()
+val bags = Files.readAllLines(Paths.get("input.txt"))
+        .map { it.removeSuffix(".") }
+        .filterNot { it.contains("no other") }
+        .map { it.replace("bag[s]?".toRegex(), "").replace("contain", ",").split(",") }
+        .map { it.map(String::trim) }
+        .map { it[0] to Bag(it[0], toChildBags(it.subList(1, it.size))) }.toMap()
 
-Files.readAllLines(Paths.get("input.txt")).forEach { line ->
+println(bags.filter { it.value.hasColor("shiny gold", bags) }.count())
+println(bags["shiny gold"]?.getChildBagNumber(bags))
 
-    val noBagsResult = noBagsRegex.find(line)
-    if (noBagsResult != null) {
-        val (type) = noBagsResult.destructured
-        allBags.add(Bag(type))
-        return@forEach
-    }
+data class Bag(val color: String, val childBags: Map<String, Int>)
 
-    val parts = line.split(" bags contain ")
-    val bagType = parts[0]
-    allBags.add(Bag(bagType))
+fun Bag.hasColor(color: String, bags: Map<String, Bag>): Boolean =
+        if (this.childBags.keys.contains(color)) true
+        else this.childBags.keys.any { bags[it]?.hasColor(color, bags) == true }
 
-    parts[1].split(", ").map { it.replace(".", "") }.forEach {
-        val result = contentRegex.find(it)
-        val (count, type) = result?.destructured ?: error("parsing error")
-        rules.add(BagRule(bagType, type, count.toInt()))
-    }
-}
-println("${rules.size} Rules")
-
-val workingBags = arrayListOf<Bag>()
-
-rules.forEach { rule ->
-    var bag = getBag(rule.root)
-    bag.bags.add(getBag(rule.type))
+fun toChildBags(bags: List<String>): Map<String, Int> {
+    return bags.map { it.substring(2) to Integer.parseInt(it.substring(0, 1)) }.toMap()
 }
 
-var counter = 0
-workingBags.forEach {
-    if (it.bags.containsShinyGolden()) {
-        counter++
-    }
-}
-println(counter)
-
-fun getBag(type: String): Bag {
-    var bag = workingBags.find { it.type == type }
-    if (bag == null) {
-        bag = Bag(type)
-        workingBags.add(bag)
-    }
-    return bag
-}
-
-data class Bag(val type: String, val bags: MutableList<Bag> = ArrayList())
-
-data class BagRule(val root: String, val type: String, val count: Int)
-
-fun MutableList<Bag>.containsShinyGolden(): Boolean {
-    return map {
-        if (it.type == "shiny gold")
-            return@map true
-
-        if (it.bags.isEmpty())
-            return@map false
-
-        return@map it.bags.containsShinyGolden()
-    }.any { it }
+fun Bag.getChildBagNumber(bags: Map<String, Bag>): Int {
+    return this.childBags.map { (bags[it.key]?.getChildBagNumber(bags) ?: 0) * it.value + it.value }.sum()
 }
