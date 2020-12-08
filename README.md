@@ -10,14 +10,16 @@ Hier ist ein Überblick über die Vollständigkeit sowie die existierenden Lösu
 
 Here's an overview of the completeness as well as the existing solutions and languages used in this repository:
 
-| Day/Lang | Python | TypeScript | C   | Kotlin | Java |
-| -------- | ------ | ---------- | --- | ------ | ---- |
-| 01       | ✅      | ✅          | ✅   | ✅      | ✅    |
-| 02       | ✅      | ✅          | ✅   | ✅      | ✅    |
-| 03       | ✅      | ✅          | ✅   | ✅      | ✅    |
-| 04       | ✅      | ✅          | ✅   | ✅      | ✅    |
-| 05       | ✅      | ❌          | ✅   | ✅      | ✅    |
-| 06       | ✅      | ✅          | ✅   | ✅      | ✅    |
+| Day/Lang | Python | TypeScript | C   | Kotlin | Java | Clojure |
+| -------- | ------ | ---------- | --- | ------ | ---- | ------- |
+| 01       | ✅      | ✅          | ✅   | ✅      | ✅    | ❌       |
+| 02       | ✅      | ✅          | ✅   | ✅      | ✅    | ❌       |
+| 03       | ✅      | ✅          | ✅   | ✅      | ✅    | ❌       |
+| 04       | ✅      | ✅          | ✅   | ✅      | ✅    | ❌       |
+| 05       | ✅      | ❌          | ✅   | ✅      | ✅    | ❌       |
+| 06       | ✅      | ✅          | ✅   | ✅      | ✅    | ❌       |
+| 07       | ✅      | ❌          | ❌   | ✅      | ❌    | ✅       |
+| 08       | ✅      |            | ✅   | ✅      |      |         |
 
 ❌   = Keine Lösung/No solution,
 ✅   = Voll gelöst/Fully solved,
