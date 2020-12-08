@@ -1,40 +1,69 @@
 import java.nio.file.Files
 import java.nio.file.Paths
+import kotlin.system.measureTimeMillis
 
 val instructions = Files.readAllLines(Paths.get("input.txt"))
         .map { it.split(" ") }
-        .map { Instruction(it[0], it[1].toInt()) }
+        .mapIndexed { index, splitten -> Instruction(index, splitten[0], splitten[1].toInt()) }
+        .toTypedArray()
 
-var accumulator = 0
+val program = Program(instructions.createCopy())
+val result = program.execute()
+println("accumulator is at ${result.accumulator}")
 
-var currentInstruction = 0
+val alternativeProgramResult = instructions
+        .filter { it.type in arrayOf("jmp", "nop") }
+        .map {
+            val program = Program(instructions.createCopy())
+            program.instructions[it.index].flipType("jmp", "nop")
+            program.execute()
+        }
+        .firstOrNull { it.exitCode == 0 }
 
-while (currentInstruction < instructions.size) {
-    val instruction = instructions[currentInstruction]
-    if (instruction.executions > 0) {
-        println("accumulator is at $accumulator")
-        break
-    }
-    currentInstruction += instruction.execute()
-}
+println("accumulator with fixed program is ${alternativeProgramResult?.accumulator}")
 
-fun Instruction.execute(): Int {
+fun Instruction.execute(program: Program): Int {
     this.executions++
     return when (type) {
         "acc" -> {
-            accumulator += this.value
+            program.accumulator += this.value
             1
         }
         "jmp" -> {
             this.value
         }
-        "nop" -> {
-            1
-        }
         else -> {
-            error("Invalid instruction type: $type")
+            1
         }
     }
 }
 
-data class Instruction(val type: String, val value: Int, var executions: Int = 0)
+fun Array<Instruction>.createCopy() = this.map { it.copy() }.toTypedArray()
+
+fun Program.execute(): ExecutionResult {
+    var currentInstruction = 0
+
+    while (currentInstruction < this.instructions.size) {
+        val instruction = this.instructions[currentInstruction]
+        if (instruction.executions > 0) {
+            return ExecutionResult(accumulator, -1)
+        }
+        currentInstruction += instruction.execute(this)
+    }
+    return ExecutionResult(accumulator, 0)
+}
+
+fun Instruction.flipType(first: String, second: String) {
+    when (this.type) {
+        first -> {
+            this.type = second
+        }
+        second -> {
+            this.type = first
+        }
+    }
+}
+
+data class Program(val instructions: Array<Instruction>, var accumulator: Int = 0)
+data class ExecutionResult(val accumulator: Int, val exitCode: Int)
+data class Instruction(var index: Int, var type: String, val value: Int, var executions: Int = 0) : Cloneable
