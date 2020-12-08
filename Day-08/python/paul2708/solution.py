@@ -7,7 +7,7 @@ class Program():
     def __init__(self, instructions: [str]):
         self.accumulator = 0
         self.instruction_pointer = 0
-        self.instructions = instructions
+        self.instructions = list(instructions)
 
     def run(self):
         instruction = instructions[self.instruction_pointer]
@@ -77,8 +77,8 @@ def replace(replacement_list: [str], old: str, new: str, start: int) -> ([str], 
     return [], -1
 
 
-replaced_instructions_list = replace_all(read_lines("day08"), "jmp", "nop") \
-                             + replace_all(read_lines("day08"), "nop", "jmp")
+replaced_instructions_list = replace_all(instructions, "jmp", "nop") \
+                             + replace_all(instructions, "nop", "jmp")
 
 for instructions in replaced_instructions_list:
     program = Program(instructions)
