@@ -1,46 +1,50 @@
+package de.nycode.aoc2020.day04
+
 import java.nio.file.Files
 import java.nio.file.Paths
 
 typealias Document = HashMap<String, String>
 
-val documents = parseInput()
+fun main() {
+    val documents = parseInput()
 
-var validCounter = 0
+    var validCounter = 0
 
-documents.forEach { document ->
-    if (document.areRequiredFieldsPresent()) {
-        validCounter++
-    }
-}
-
-println("Found $validCounter documents with required fields present")
-
-val rules = ValidationRule.values()
-
-validCounter = 0
-
-documents.forEach { document ->
-
-    if (document.areRequiredFieldsPresent()) {
-        val invalid = document.map { entry ->
-            val (key, value) = entry
-
-            val rule = rules.firstOrNull { it.key == key } ?: error("Unknown key $key")
-
-            if (rule.regex == null) {
-                true
-            } else {
-                rule.regex.matches(value)
-            }
-        }.any { !it }
-
-        if (!invalid) {
+    documents.forEach { document ->
+        if (document.areRequiredFieldsPresent()) {
             validCounter++
         }
     }
-}
 
-println("Found $validCounter valid documents!")
+    println("Found $validCounter documents with required fields present")
+
+    val rules = ValidationRule.values()
+
+    validCounter = 0
+
+    documents.forEach { document ->
+
+        if (document.areRequiredFieldsPresent()) {
+            val invalid = document.map { entry ->
+                val (key, value) = entry
+
+                val rule = rules.firstOrNull { it.key == key } ?: error("Unknown key $key")
+
+                if (rule.regex == null) {
+                    true
+                } else {
+                    rule.regex.matches(value)
+                }
+            }.any { !it }
+
+            if (!invalid) {
+                validCounter++
+            }
+        }
+    }
+
+    println("Found $validCounter valid documents!")
+}
 
 fun parseInput(): List<Document> {
     val lines = Files.readAllLines(Paths.get("./input.txt"))
@@ -53,16 +57,16 @@ fun parseInput(): List<Document> {
 
     while (lineCounter < lines.size) {
 
-        var line = lines[lineCounter]
+        val line = lines[lineCounter]
 
         if (line.isNotBlank()) {
             line.split(" ")
-                .forEach {
-                    val splitten = it.split(":")
-                    val key = splitten[0]
-                    val value = splitten[1]
-                    currentDocument[key] = value
-                }
+                    .forEach {
+                        val splitten = it.split(":")
+                        val key = splitten[0]
+                        val value = splitten[1]
+                        currentDocument[key] = value
+                    }
         } else {
             currentDocument = Document()
             documents.add(currentDocument)

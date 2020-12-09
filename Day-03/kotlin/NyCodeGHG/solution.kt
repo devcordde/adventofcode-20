@@ -1,31 +1,34 @@
-#!/usr/bin/env kscript
+package de.nycode.aoc2020.day03
+
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 
-println("Advent of Code Day 3")
+fun main() {
+    println("Advent of Code Day 3")
 
-val input = parseInput(Paths.get("input.txt"))
+    val input = parseInput(Paths.get("input.txt"))
 
-val results: Array<Int> = arrayOf(
-        getTreeCountForPath(1, 1),
-        getTreeCountForPath(3, 1),
-        getTreeCountForPath(5, 1),
-        getTreeCountForPath(7, 1),
-        getTreeCountForPath(1, 2),
-)
+    val results: Array<Int> = arrayOf(
+            getTreeCountForPath(input, 1, 1),
+            getTreeCountForPath(input, 3, 1),
+            getTreeCountForPath(input, 5, 1),
+            getTreeCountForPath(input, 7, 1),
+            getTreeCountForPath(input, 1, 2),
+    )
 
-var result = 1L
+    var result = 1L
 
-results.forEach {
-    result *= it
-    println(it)
+    results.forEach {
+        result *= it
+        println(it)
+    }
+
+    println("Result: $result")
 }
 
-println("Result: $result")
-
-fun getTreeCountForPath(right: Int, down: Int): Int {
+fun getTreeCountForPath(input: Array<Array<Position>>, right: Int, down: Int): Int {
     var treeCounter = 0
 
     var x = 0
