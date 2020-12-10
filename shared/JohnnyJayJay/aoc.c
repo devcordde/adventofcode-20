@@ -43,6 +43,16 @@ void read_ints(FILE* file, int* buf, int max) {
     }
 }
 
+void read_longs(FILE* file, long* buf, int max) {
+    for (int i = 0; i < max; i++) {
+        long num;
+        if (EOF == fscanf(file, "%ld", &num)) {
+            return;
+        }
+        buf[i] = num;
+    }
+}
+
 int chars_until(FILE* file, char term, int rewind) {
     long pos = ftell(file);
     int count = -1;
@@ -65,6 +75,12 @@ int charcount(char* str, char c, int from, int to) {
         }
     }
     return count;
+}
+
+int intcmp(const void* one, const void* two) {
+    int a = *((int*) one);
+    int b = *((int*) two);
+    return a - b;
 }
         
     
