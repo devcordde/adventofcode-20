@@ -16,10 +16,12 @@ Here's an overview of the completeness as well as the existing solutions and lan
 | 02       | ✅      | ✅          | ✅   | ✅      | ✅    | ❌       |
 | 03       | ✅      | ✅          | ✅   | ✅      | ✅    | ❌       |
 | 04       | ✅      | ✅          | ✅   | ✅      | ✅    | ❌       |
-| 05       | ✅      | ❌          | ✅   | ✅      | ✅    | ❌       |
+| 05       | ✅      | (✅)        | ✅   | ✅      | ✅    | ❌       |
 | 06       | ✅      | ✅          | ✅   | ✅      | ✅    | ❌       |
-| 07       | ✅      | ❌          | ❌   | ✅      | ❌    | ✅       |
-| 08       | ✅      |            | ✅   | ✅      |      |         |
+| 07       | ✅      | ✅          | ❌   | ✅      | ❌    | ✅       |
+| 08       | ✅      | ✅          | ✅   | ✅      | ❌    | ❌       |
+| 09       | ✅      | ✅          | ✅   | ✅      | ❌    | ❌       |
+| 10       | ❌      | ❌          | ✅   | ✅      | ❌    | ❌       |
 
 ❌   = Keine Lösung/No solution,
 ✅   = Voll gelöst/Fully solved,
