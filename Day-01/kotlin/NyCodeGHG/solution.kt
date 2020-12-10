@@ -1,16 +1,18 @@
-#!/usr/bin/env kscript
+package de.nycode.aoc2020.day01
 import java.lang.NumberFormatException
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 
-println("Advent of Code Day 1")
+fun main() {
+    println("Advent of Code Day 1")
 
-val input = parseInput(Paths.get("input.txt"))
+    val input = parseInput(Paths.get("input.txt"))
 
-findFirst(input)
-findSecond(input)
+    findFirst(input)
+    findSecond(input)
+}
 
 fun parseInput(path: Path): List<Int> {
     try {
@@ -36,7 +38,6 @@ fun findFirst(input: List<Int>) {
             }
         }
     }
-
 }
 
 fun findSecond(input: List<Int>) {
@@ -56,5 +57,4 @@ fun findSecond(input: List<Int>) {
             }
         }
     }
-
 }

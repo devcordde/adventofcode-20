@@ -1,26 +1,29 @@
+package de.nycode.aoc2020.day08
+
 import java.nio.file.Files
 import java.nio.file.Paths
-import kotlin.system.measureTimeMillis
 
 val instructions = Files.readAllLines(Paths.get("input.txt"))
         .map { it.split(" ") }
         .mapIndexed { index, splitten -> Instruction(index, splitten[0], splitten[1].toInt()) }
         .toTypedArray()
 
-val program = Program(instructions.createCopy())
-val result = program.execute()
-println("accumulator is at ${result.accumulator}")
+fun main() {
+    val program = Program(instructions.createCopy())
+    val result = program.execute()
+    println("accumulator is at ${result.accumulator}")
 
-val alternativeProgramResult = instructions
-        .filter { it.type in arrayOf("jmp", "nop") }
-        .map {
-            val program = Program(instructions.createCopy())
-            program.instructions[it.index].flipType("jmp", "nop")
-            program.execute()
-        }
-        .firstOrNull { it.exitCode == 0 }
+    val alternativeProgramResult = instructions
+            .filter { it.type in arrayOf("jmp", "nop") }
+            .map {
+                val copiedProgram = Program(instructions.createCopy())
+                copiedProgram.instructions[it.index].flipType("jmp", "nop")
+                copiedProgram.execute()
+            }
+            .firstOrNull { it.exitCode == 0 }
 
-println("accumulator with fixed program is ${alternativeProgramResult?.accumulator}")
+    println("accumulator with fixed program is ${alternativeProgramResult?.accumulator}")
+}
 
 fun Instruction.execute(program: Program): Int {
     this.executions++

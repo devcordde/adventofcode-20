@@ -1,2 +1,3 @@
-# Kotlin Solution
-I recommend to use [kscript](https://github.com/holgerbrandl/kscript) by [@holgerbrandl](https://github.com/holgerbrandl) to execute the script file.
+# Kotlin Solution for Day 2
+
+Create a new file **input.txt** in this directory with your input.
