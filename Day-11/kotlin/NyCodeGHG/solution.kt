@@ -5,9 +5,7 @@ import java.nio.file.Paths
 
 fun main() {
 
-    val seats: Array<Array<Char>> = Files.readAllLines(Paths.get("input.txt"))
-            .map { it.toCharArray().toTypedArray() }
-            .toTypedArray()
+    var seats: Array<Array<Char>> = readSeats()
 
     while (true) {
         if (seats.runSimulation().isEmpty())
@@ -16,9 +14,24 @@ fun main() {
 
     val occupiedSeats = seats.flatten().filter { it == '#' }.size
     println(occupiedSeats)
+
+    seats = readSeats()
+    while (true) {
+        if (seats.runSimulation(true).isEmpty())
+            break
+    }
+
+    val occupiedSeats2 = seats.flatten().filter { it == '#' }.size
+    println(occupiedSeats2)
 }
 
-fun Array<Array<Char>>.runSimulation(): Map<Pair<Int, Int>, Char> {
+fun readSeats(): Array<Array<Char>> {
+    return Files.readAllLines(Paths.get("input.txt"))
+            .map { it.toCharArray().toTypedArray() }
+            .toTypedArray()
+}
+
+fun Array<Array<Char>>.runSimulation(viewMode: Boolean = false): Map<Pair<Int, Int>, Char> {
 
     val changes = mutableMapOf<Pair<Int, Int>, Char>()
 
@@ -27,13 +40,13 @@ fun Array<Array<Char>>.runSimulation(): Map<Pair<Int, Int>, Char> {
             if (seat == '.')
                 return@forEachIndexed
 
-            val neighbors = this.getNeighbours(x, y)
+            val neighbors = if (!viewMode) this.getNeighbours(x, y) else this.getSeatsInView(x, y)
 
             if (seat == 'L' && neighbors.all { it == 'L' || it == '.' }) {
                 changes[x to y] = '#'
             }
 
-            if (seat == '#' && neighbors.filter { it == '#' }.size >= 4) {
+            if (seat == '#' && neighbors.filter { it == '#' }.size >= if (viewMode) 5 else 4) {
                 changes[x to y] = 'L'
             }
         }
@@ -68,4 +81,42 @@ fun Array<Array<Char>>.getOffsetSeat(offsetX: Int, offsetY: Int): Char {
         return '.'
 
     return column[offsetY]
+}
+
+fun Array<Array<Char>>.getSeatInView(x: Int, y: Int, direction: Direction): Char {
+    var counter = 1
+    val (offsetX, offsetY) = direction
+
+    while (true) {
+        val posX = x + offsetX * counter
+        val posY = y + offsetY * counter
+
+        if (posX >= this.size || posX < 0)
+            return '.'
+        if (posY >= this[posX].size || posY < 0)
+            return '.'
+
+        val seat = this[posX][posY]
+        if (seat != '.')
+            return seat
+        counter++
+    }
+}
+
+fun Array<Array<Char>>.getSeatsInView(x: Int, y: Int): Array<Char> {
+    return Direction.values().map { this.getSeatInView(x, y, it) }.toTypedArray()
+}
+
+enum class Direction(private val x: Int, private val y: Int) {
+    TOP(0, 1),
+    TOP_LEFT(-1, 1),
+    TOP_RIGHT(1, 1),
+    CENTER_LEFT(-1, 0),
+    CENTER_RIGHT(1, 0),
+    BOTTOM(0, -1),
+    BOTTOM_LEFT(-1, -1),
+    BOTTOM_RIGHT(1, -1);
+
+    operator fun component1() = x
+    operator fun component2() = y
 }
