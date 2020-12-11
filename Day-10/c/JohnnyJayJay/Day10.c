@@ -3,20 +3,6 @@
 #include <limits.h>
 #include "../../../shared/JohnnyJayJay/aoc.h"
 
-long valid_permutations(int* jolt_ratings, int length, long count) {
-    for (int i = 1; i < length - 1; i++) {
-        int previous = jolt_ratings[i - 1];
-        int next = jolt_ratings[i + 1];
-        if (next - previous <= 3) {
-            int current = jolt_ratings[i];
-            jolt_ratings[i] = previous;
-            count *= 2;
-            count += valid_permutations(jolt_ratings + i, length - i, count + 1);
-            jolt_ratings[i] = current;
-        }
-    }
-    return count;
-}
 
 int main(int argc, char** argv) {
     FILE* file = fopen(argv[1], "r");
@@ -48,6 +34,10 @@ int main(int argc, char** argv) {
     printf("%d one jolt and %d three jolt differences - Result: %d\n", 
             one_jolt_differences, three_jolt_differences, one_jolt_differences * three_jolt_differences);
     
+    // the number of permutations is equal to the product of all streaks in the sequence.
+    // a streak is a consecutive subsequence of 1s in the difference map. Each streak's number of permutations 
+    // can be calculated with the formula pow(2, s - 1) - min(0, pow(2, s - 3) - 1), where s is the streak length 
+    // (number of 1s, in the code below exactly one lower)
     long permutations = 1;
     int streak_len = -1;
     for (int i = 0; i < lines + 1; i++) {
