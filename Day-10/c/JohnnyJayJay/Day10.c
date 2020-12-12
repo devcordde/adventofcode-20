@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
     
     // the number of permutations is equal to the product of all streaks in the sequence.
     // a streak is a consecutive subsequence of 1s in the difference map. Each streak's number of permutations 
-    // can be calculated with the formula pow(2, s - 1) - min(0, pow(2, s - 3) - 1), where s is the streak length 
+    // can be calculated with the formula pow(2, s - 1) - max(0, pow(2, s - 3) - 1), where s is the streak length 
     // (number of 1s, in the code below exactly one lower)
     long permutations = 1;
     int streak_len = -1;
