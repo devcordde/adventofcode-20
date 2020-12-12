@@ -22,6 +22,7 @@ Here's an overview of the completeness as well as the existing solutions and lan
 | 08       | ✅      | ✅          | ✅   | ✅      | ❌    | ❌       |
 | 09       | ✅      | ✅          | ✅   | ✅      | ❌    | ❌       |
 | 10       | ❌      | ❌          | ✅   | ✅      | ❌    | ❌       |
+| 11       | ❌      | ❌          | ✅   | ✅      | ❌    | ❌       |
 
 ❌   = Keine Lösung/No solution,
 ✅   = Voll gelöst/Fully solved,
