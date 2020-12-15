@@ -19,13 +19,7 @@ int find_value(char* desc, int length, char lower, char upper) {
 int intcmp(const void* one, const void* two) {
     int a = *((int*) one);
     int b = *((int*) two);
-    if (a == b) {
-        return 0;
-    } else if (a < b) {
-        return -1;
-    } else {
-        return 1;
-    }
+    return a - b;
 }
 
 int main(int argc, char** argv) {
@@ -47,7 +41,7 @@ int main(int argc, char** argv) {
     for (int i = 0; i < lines - 1; i++) {
         int first = passes[i];
         int second = passes[i + 1];
-        if (abs(first - second) == 2) {
+        if (second - first == 2) {
             own_seat_id = first + 1;
             break;
         }

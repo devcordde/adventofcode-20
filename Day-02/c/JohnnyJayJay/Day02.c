@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
     FILE* file = fopen(argv[1], "r");
     int lines = count_lines(file);
     
-    db_entry entries[lines];
+    db_entry* entries = malloc(sizeof(db_entry) * lines);
     for (int i = 0; i < lines; i++) {
         int min, max;
         char c;
