@@ -23,6 +23,12 @@ Here's an overview of the completeness as well as the existing solutions and lan
 | 09       | ✅      | ✅          | ✅   | ✅      | ❌    | ❌       |
 | 10       | ❌      | ❌          | ✅   | ✅      | ❌    | ❌       |
 | 11       | ❌      | ❌          | ✅   | ✅      | ❌    | ❌       |
+| 12       | ✅      | ❌          | ❌   | ❌      | ❌    | ❌       |
+| 13       | ✅      | ❌          | ❌   | ❌      | ❌    | ❌       |
+| 14       | ❌      | ❌          | ❌   | ❌      | ❌    | ❌       |
+| 15       | ✅      | ❌          | ❌   | ❌      | ❌    | ❌       |
+
+
 
 ❌   = Keine Lösung/No solution,
 ✅   = Voll gelöst/Fully solved,
